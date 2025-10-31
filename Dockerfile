@@ -2,7 +2,7 @@ FROM --platform=linux/amd64 centos:7
 
 # Use Aliyun CentOS mirror
 RUN set -eux; \
-    echo ">>> Switching CentOS 7 repo to Aliyun mirror..."; \
+    echo "🔧 Switching CentOS 7 repo to Aliyun mirror..."; \
     curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo; \
     yum clean all; \
     yum makecache fast; \
