@@ -1,13 +1,11 @@
 FROM --platform=linux/amd64 centos:7
 
-RUN yum clean all && yum makecache fast --setopt=fastestmirror=false
-
 # Use Aliyun CentOS mirror
 RUN set -eux; \
-    sed -i 's|^mirrorlist=|#mirrorlist=|g' /etc/yum.repos.d/CentOS-Base.repo; \
-    sed -i 's|^#baseurl=http://mirror.centos.org/centos/\$releasever|baseurl=http://vault.centos.org/7.9.2009|g' /etc/yum.repos.d/CentOS-Base.repo; \
+    echo ">>> Switching CentOS 7 repo to Aliyun mirror..."; \
+    curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo; \
     yum clean all; \
-    yum makecache fast
+    yum makecache fast; \
 
 # Install dependencies: ImageMagick, WebP tools, and OSS CLI
 RUN yum install -y epel-release && \
