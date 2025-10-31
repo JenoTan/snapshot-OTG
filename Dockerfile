@@ -1,5 +1,7 @@
 FROM --platform=linux/amd64 centos:7
 
+RUN yum clean all && yum makecache fast --setopt=fastestmirror=false
+
 # Use Aliyun CentOS mirror
 RUN sed -e 's|^mirrorlist=|#mirrorlist=|g' \
         -e 's|^#baseurl=http://mirror.centos.org|baseurl=https://mirrors.aliyun.com|g' \
