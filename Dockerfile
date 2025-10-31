@@ -2,7 +2,7 @@ FROM --platform=linux/amd64 centos:7
 
 # Use Aliyun CentOS mirror
 RUN sed -i 's|^mirrorlist=|#mirrorlist=|g' /etc/yum.repos.d/CentOS-* && \
-    sed -i 's|^#baseurl=http://mirror.centos.org|baseurl=https://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+    sed -i 's|^#baseurl=http://mirror.centos.org|baseurl=https://vault.centos.org|g' /etc/yum.repos.d/CentOS-* && \
     yum clean all && yum makecache
 
 # Install dependencies: ImageMagick, WebP tools, and OSS CLI
